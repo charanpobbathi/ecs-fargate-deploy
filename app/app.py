@@ -23,7 +23,7 @@ def home():
             <h1>🚀 Hello from ECS Fargate!</h1>
             <p>Your CI/CD pipeline is working perfectly.</p>
             <p class="status">● System Status: Online</p>
-            <div class="version">Build Version: 1.0.1</div>
+            <div class="version">Build Version: 1.0.2</div>
         </div>
     </body>
     </html>
