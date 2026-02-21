@@ -1,0 +1,29 @@
+{
+  "family": "py-app-task",
+  "containerDefinitions": [
+    {
+      "name": "py-container",
+      "image": "801246775892.dkr.ecr.us-east-1.amazonaws.com/ecr-fargate-py-app:latest",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/ecr-fargate-py-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::801246775892:role/ecs-task-execution-role-py-app"
+}

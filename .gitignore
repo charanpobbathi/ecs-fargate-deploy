@@ -1,0 +1,17 @@
+# --- Terraform Ignore ---
+**/terraform/.terraform/*
+**/terraform/*.tfstate
+**/terraform/*.tfstate.*
+**/terraform/terraform.tfvars
+**/terraform/.terraform.lock.hcl
+
+# --- Python & App Ignore ---
+**/app/__pycache__/
+**/app/*.py[cod]
+**/app/*.so
+**/app/.pytest_cache/
+
+# --- OS/IDE Ignore ---
+.DS_Store
+.vscode/
+*.exe
