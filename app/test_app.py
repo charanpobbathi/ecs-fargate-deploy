@@ -8,18 +8,16 @@ def client():
         yield client
 
 def test_home_status_code(client):
-    """Check if the home page returns 200 OK"""
     response = client.get('/')
     assert response.status_code == 200
 
-def test_home_data(client):
-    """Check if the home page returns the correct JSON message"""
+def test_home_html_content(client):
+    """Verify that the H1 tag and the message exist in the HTML"""
     response = client.get('/')
-    data = response.get_json()
-    assert data['message'] == "Hello from ECS Fargate!"
+    assert b"<h1>" in response.data
+    assert b"Hello from ECS Fargate!" in response.data
 
 def test_health_endpoint(client):
-    """Check if the health endpoint returns healthy status"""
     response = client.get('/health')
     assert response.status_code == 200
     data = response.get_json()
