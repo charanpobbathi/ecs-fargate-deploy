@@ -1,10 +1,10 @@
-# 🚀 AWS ECS Fargate CI/CD Pipeline
+# AWS ECS Fargate CI/CD Pipeline
 
 This project demonstrates a deployment of a **Python Flask** application using **Amazon ECS Fargate**. The infrastructure is defined as Code (IaC) using **Terraform**, and the application lifecycle is fully automated via a **GitHub Actions** CI/CD pipeline.
 
 ---
 
-## 🏗️ 1. Architecture
+## 1. Architecture
 
 The project implements a highly available, multi-AZ (Availability Zone) architecture to ensure reliability and scalability.
 
@@ -18,7 +18,7 @@ The project implements a highly available, multi-AZ (Availability Zone) architec
 
 ---
 
-## 🛠️ 2. Infrastructure as Code (Terraform)
+## 2. Infrastructure as Code (Terraform)
 
 The infrastructure is managed through a modular Terraform setup. The deployment follows three critical stages:
 
@@ -30,7 +30,7 @@ The infrastructure is managed through a modular Terraform setup. The deployment 
 
 ---
 
-## 🚀 3. Runbook (Operational Guide)
+## 3. Runbook (Operational Guide)
 
 ### Deployment Instructions
 1.  **Infrastructure:** Navigate to the `/terraform` directory and run:
@@ -55,7 +55,7 @@ The infrastructure is managed through a modular Terraform setup. The deployment 
 
 ---
 
-## 🔍 4. Troubleshooting
+## 4. Troubleshooting
 
 | Symptom | Probable Cause | Fix |
 | :--- | :--- | :--- |
