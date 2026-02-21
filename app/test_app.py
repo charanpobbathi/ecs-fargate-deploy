@@ -22,3 +22,8 @@ def test_health_endpoint(client):
     assert response.status_code == 200
     data = response.get_json()
     assert data['status'] == "healthy"
+
+def test_logic_calculation():
+    """Test a simple piece of logic independent of the web server."""
+    result = 10 + 20
+    assert result == 30

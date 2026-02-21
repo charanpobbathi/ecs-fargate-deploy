@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "app" {
 
   container_definitions = jsonencode([{
     name      = "py-container"
-    image     = "${aws_ecr_repository.app_repo.repository_url}:latest" # GitHub will update this later
+    image     = "${aws_ecr_repository.app_repo.repository_url}:latest"
     portMappings = [{ containerPort = 80, hostPort = 80 }]
     logConfiguration = {
       logDriver = "awslogs"
@@ -29,6 +29,15 @@ resource "aws_ecs_service" "main" {
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = 1
   launch_type     = "FARGATE"
+
+  # --- ADDED FOR ROLLING DEPLOYMENT & ROLLBACK ---
+  deployment_maximum_percent         = 200
+  deployment_minimum_healthy_percent = 100
+
+  deployment_circuit_breaker {
+    enable   = true
+    rollback = true
+  }
 
   network_configuration {
     subnets          = [aws_subnet.pub_a.id, aws_subnet.pub_b.id]
