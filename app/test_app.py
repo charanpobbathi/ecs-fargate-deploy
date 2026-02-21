@@ -1,9 +1,24 @@
-# app/test_app.py
-def test_simple_check():
-    # A basic test that always passes to satisfy the pipeline
-    assert 1 == 1
+import pytest
+from app import app
 
-def test_app_logic():
-    # You can add more complex logic tests here later
-    example_value = "ECS"
-    assert example_value.lower() == "ecs"
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
+
+def test_home_status_code(client):
+    response = client.get('/')
+    assert response.status_code == 200
+
+def test_home_html_content(client):
+    """Verify that the H1 tag and the message exist in the HTML"""
+    response = client.get('/')
+    assert b"<h1>" in response.data
+    assert b"Hello from ECS Fargate!" in response.data
+
+def test_health_endpoint(client):
+    response = client.get('/health')
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data['status'] == "healthy"
